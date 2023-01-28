@@ -1,0 +1,17 @@
+.colorSquare{
+    border: solid;
+    border-color: black;
+    border-width: thin;
+    width: 20px;
+    height: 20px;
+    margin: 1px;
+
+}
+
+.activeSquare{
+    background-color: green;
+}
+
+.row {
+    display: flex;
+}
