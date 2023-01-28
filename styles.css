@@ -9,6 +9,11 @@ body {
     margin-bottom: 16px;
 }
 
+.topButtons {
+    display: flex;
+    gap: 64px;
+}
+
 .colorSquare{
     border: solid;
     border-color: black;

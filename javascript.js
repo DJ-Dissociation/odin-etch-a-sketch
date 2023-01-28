@@ -1,6 +1,7 @@
 // Variable definitions
 const container = document.querySelector('.container');     // select container to hold all the squares
 const containerWidth = 690; //px
+let activeColor = "green";
 // let dimension = 320;
 // let nSquares = 16;
 
@@ -38,7 +39,8 @@ function activateSquares() {
     squares.forEach((square) => {
         square.addEventListener('mouseenter', () =>{
             console.log("hovering");
-            square.classList.add('activeSquare');
+            square.style.backgroundColor = activeColor;
+            // square.classList.add('activeSquare');
         });
     });
     return squares;
@@ -48,7 +50,8 @@ function activateSquares() {
 const resetButton = document.querySelector('.resetButton');
 resetButton.addEventListener('click', () => {
     squares.forEach((square) => {
-        square.classList.remove('activeSquare');
+        square.style.backgroundColor = "white";
+        // square.classList.remove('activeSquare');
     })
 });
 
@@ -62,4 +65,16 @@ function resizeGrid(){
     }
     makeGrid(dimension);
     squares = activateSquares();
+}
+
+// A function to run when the Color picking button is pressed; takes user input
+// then sets the ink color to their color of choice, if it's accepted in CSS
+function pickColor(){
+    let color = prompt("What color do you want? (common ones only pls)");
+    if (!CSS.supports('color', color)){
+        alert("Sorry, gonna have to use green instead..");
+        activeColor = "green";
+        return;
+    }
+    activeColor = color;
 }
