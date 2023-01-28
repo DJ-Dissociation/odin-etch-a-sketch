@@ -1,9 +1,7 @@
 // Variable definitions
 const container = document.querySelector('.container');     // select container to hold all the squares
 const containerWidth = 690; //px
-let activeColor = "green";
-// let dimension = 320;
-// let nSquares = 16;
+let activeColor = "green";  //initial color set to green
 
 // Initialize first grid of 16 squares
 makeGrid(16);
@@ -12,15 +10,13 @@ activateSquares();
 
 // Create and add all squares in a grid, given a # of squares as a dimension
 function makeGrid(dimension){
-    container.textContent = "";
-    let squareWidth = (containerWidth/dimension)+"px";
-    console.log(squareWidth);
-    console.log(typeof squareWidth);
-    for (i = 0; i < dimension; i++){    // for each row
+    container.textContent = "";                         //clear old grid
+    let squareWidth = (containerWidth/dimension)+"px";  //calculate new box size
+    for (i = 0; i < dimension; i++){                    // for each row
         const newRow = document.createElement('div');
         newRow.classList.add('row');
     
-        for (j = 0; j < dimension; j++){    // for each element per row
+        for (j = 0; j < dimension; j++){                // for each element per row
             const newSquare = document.createElement('div');
             newSquare.classList.add('colorSquare');
             newSquare.style.width = squareWidth;
@@ -29,18 +25,14 @@ function makeGrid(dimension){
         }
         container.appendChild(newRow);   
     }
-    console.log("testing: "+container.style.height);
 }
 
-// Whenever run, this sweeps the document to reselect all squares and
-// update the nodelist
+// Whenever run, this sweeps the document to reselect all squares and update the nodelist
 function activateSquares() {
     squares = document.querySelectorAll('.colorSquare');
     squares.forEach((square) => {
-        square.addEventListener('mouseenter', () =>{
-            console.log("hovering");
+        square.addEventListener('mouseenter', () =>{        // set to active color when mouse enters square
             square.style.backgroundColor = activeColor;
-            // square.classList.add('activeSquare');
         });
     });
     return squares;
@@ -51,7 +43,6 @@ const resetButton = document.querySelector('.resetButton');
 resetButton.addEventListener('click', () => {
     squares.forEach((square) => {
         square.style.backgroundColor = "white";
-        // square.classList.remove('activeSquare');
     })
 });
 
